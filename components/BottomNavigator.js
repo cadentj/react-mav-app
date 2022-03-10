@@ -1,15 +1,11 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import List from '@mui/material/List';
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import Paper from '@mui/material/Paper';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import Typography from '@mui/material/Typography';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 import {
   Link as RouterLink,
   Route,
@@ -17,27 +13,9 @@ import {
   MemoryRouter,
   useLocation,
 } from 'react-router-dom';
-import { StaticRouter } from 'react-router-dom/server.js';
 
-function Router(props) {
-  const { children } = props;
-  if (typeof window === 'undefined') {
-    return <StaticRouter location="/drafts">{children}</StaticRouter>;
-  }
-
-  return (
-    <MemoryRouter initialEntries={['/drafts']} initialIndex={0}>
-      {children}
-    </MemoryRouter>
-  );
-}
-
-Router.propTypes = {
-  children: PropTypes.node,
-};
-
-function ListItemLink(props) {
-  const { icon, primary, to } = props;
+function BottomNavTab(props) {
+  const { label, icon, to } = props;
 
   const renderLink = React.useMemo(
     () =>
@@ -48,49 +26,27 @@ function ListItemLink(props) {
   );
 
   return (
-    <li>
-      <ListItem button component={renderLink}>
-        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-        <ListItemText primary={primary} />
-      </ListItem>
-    </li>
+    <BottomNavigationAction label={label} icon={icon} />
   );
 }
 
-ListItemLink.propTypes = {
-  icon: PropTypes.element,
-  primary: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-};
 
-function Content() {
-  const location = useLocation();
-  return (
-    <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
-      Current route: {location.pathname}
-    </Typography>
-  );
-}
+export default function SimpleBottomNavigation() {
+  const [value, setValue] = React.useState(0);
 
-export default function ListRouter() {
   return (
-    <Router>
-      <Box sx={{ width: 500 }}>
-        <Routes>
-          <Route path="*" element={<Content />} />
-        </Routes>
-        <BottomNavigation
-          showLabels
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-          <BottomNavigationAction to="/inbox" label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction to="/drafts" label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction to="/trash" label="Nearby" icon={<LocationOnIcon />} />
-        </BottomNavigation>
-      </Box>
-    </Router>
+    <Box sx={{ width: 500 }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavTab label="Recents" icon={<RestoreIcon />} />
+        <BottomNavTab label="Favorites" icon={<FavoriteIcon />} />
+        <BottomNavTab label="Nearby" icon={<LocationOnIcon />} />
+      </BottomNavigation>
+    </Box>
   );
 }
