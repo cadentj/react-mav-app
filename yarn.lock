@@ -3171,6 +3171,11 @@
     "@typescript-eslint/types" "5.14.0"
     "eslint-visitor-keys" "^3.0.0"
 
+"@ungap/url-search-params@^0.1.4":
+  "integrity" "sha512-RLwrxCTDNiNev9hpr9rDq8NyeQ8Nn0X1we4Wu7Tlf368I8r+7hBj3uObhifhuLk74egaYaSX5nUsBlWz6kjj+A=="
+  "resolved" "https://registry.npmjs.org/@ungap/url-search-params/-/url-search-params-0.1.4.tgz"
+  "version" "0.1.4"
+
 "@webassemblyjs/ast@1.11.1":
   "integrity" "sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw=="
   "resolved" "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.11.1.tgz"
@@ -11205,7 +11210,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
+"react-native@>=0.44", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
@@ -11258,6 +11263,15 @@
   "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.2.2.tgz"
   "version" "6.2.2"
   dependencies:
+    "history" "^5.2.0"
+    "react-router" "6.2.2"
+
+"react-router-native@^6.2.2":
+  "integrity" "sha512-scDPerBzdLuXFKrEq0wCGqftEQpCOgkDHoyXBFJRyZJ3U1ikZxdtCnEOR2Lu7DgIcwM9EySK7UmApmkuZfsx/A=="
+  "resolved" "https://registry.npmjs.org/react-router-native/-/react-router-native-6.2.2.tgz"
+  "version" "6.2.2"
+  dependencies:
+    "@ungap/url-search-params" "^0.1.4"
     "history" "^5.2.0"
     "react-router" "6.2.2"
 

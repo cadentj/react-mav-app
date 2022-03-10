@@ -25,6 +25,7 @@
     "react-native": "0.64.3",
     "react-native-web": "0.17.1",
     "react-router-dom": "^6.2.2",
+    "react-router-native": "^6.2.2",
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {

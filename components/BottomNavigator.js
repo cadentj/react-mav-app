@@ -14,28 +14,15 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-function BottomNavTab(props) {
-  const { label, icon, to } = props;
-
-  const renderLink = React.useMemo(
-    () =>
-      React.forwardRef(function Link(itemProps, ref) {
-        return <RouterLink to={to} ref={ref} {...itemProps} role={undefined} />;
-      }),
-    [to],
-  );
-
-  return (
-    <BottomNavigationAction label={label} icon={icon} />
-  );
-}
-
+const LinkBehavior = React.forwardRef((props, ref) => (
+  <RouterLink ref={ref} to="/" {...props} role={undefined} />
+));
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box>
       <BottomNavigation
         showLabels
         value={value}
@@ -43,9 +30,9 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavTab label="Recents" icon={<RestoreIcon />} />
-        <BottomNavTab label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavTab label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} component={RouterLink} to='/'/>
+        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} component={RouterLink} to='Pages'/>
+        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} component={RouterLink} to='Calendar'/>
       </BottomNavigation>
     </Box>
   );
