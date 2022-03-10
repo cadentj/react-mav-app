@@ -1,18 +1,23 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import List from '@mui/material/List';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import ListItem from '@mui/material/ListItem';
+import Paper from '@mui/material/Paper';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
 import Typography from '@mui/material/Typography';
 import {
-  MemoryRouter,
+  Link as RouterLink,
   Route,
   Routes,
-  Link,
-  matchPath,
+  MemoryRouter,
   useLocation,
 } from 'react-router-dom';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom/server.js';
 
 function Router(props) {
   const { children } = props;
@@ -31,40 +36,35 @@ Router.propTypes = {
   children: PropTypes.node,
 };
 
-function useRouteMatch(patterns) {
-  const { pathname } = useLocation();
+function ListItemLink(props) {
+  const { icon, primary, to } = props;
 
-  for (let i = 0; i < patterns.length; i += 1) {
-    const pattern = patterns[i];
-    const possibleMatch = matchPath(pattern, pathname);
-    if (possibleMatch !== null) {
-      return possibleMatch;
-    }
-  }
-
-  return null;
-}
-
-function MyTabs() {
-  // You need to provide the routes in descendant order.
-  // This means that if you have nested routes like:
-  // users, users/new, users/edit.
-  // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routeMatch = useRouteMatch(['/inbox/:id', '/drafts', '/trash']);
-  const currentTab = routeMatch?.pattern?.path;
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef(function Link(itemProps, ref) {
+        return <RouterLink to={to} ref={ref} {...itemProps} role={undefined} />;
+      }),
+    [to],
+  );
 
   return (
-    <Tabs value={currentTab}>
-      <Tab label="Inbox" value="/inbox/:id" to="/inbox/1" component={Link} />
-      <Tab label="Drafts" value="/drafts" to="/drafts" component={Link} />
-      <Tab label="Trash" value="/trash" to="/trash" component={Link} />
-    </Tabs>
+    <li>
+      <ListItem button component={renderLink}>
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
   );
 }
 
-function CurrentRoute() {
-  const location = useLocation();
+ListItemLink.propTypes = {
+  icon: PropTypes.element,
+  primary: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
+function Content() {
+  const location = useLocation();
   return (
     <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
       Current route: {location.pathname}
@@ -72,14 +72,24 @@ function CurrentRoute() {
   );
 }
 
-export default function TabsRouter() {
+export default function ListRouter() {
   return (
     <Router>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: 500 }}>
         <Routes>
-          <Route path="*" element={<CurrentRoute />} />
+          <Route path="*" element={<Content />} />
         </Routes>
-        <MyTabs />
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction to="/inbox" label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction to="/drafts" label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction to="/trash" label="Nearby" icon={<LocationOnIcon />} />
+        </BottomNavigation>
       </Box>
     </Router>
   );
