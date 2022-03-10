@@ -10,12 +10,21 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.0",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "firebase": "^9.6.8",
+    "install": "^0.13.0",
+    "npm": "^8.5.3",
+    "react": "^17.0.2",
+    "react-calendar": "^3.7.0",
+    "react-dom": "^17.0.2",
     "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "react-router-dom": "^6.2.2",
+    "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
