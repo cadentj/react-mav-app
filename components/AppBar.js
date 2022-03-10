@@ -7,11 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { View } from 'react-native';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ButtonAppBar() {
   return (
-    <View>
-      <AppBar position="static">
+    <AppBar  position="sticky" >
         <Toolbar>
           <IconButton
             size="large"
@@ -25,9 +25,16 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ ml: 2 }}
+          >
+            <AccountCircleIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
-    </View>
   );
 }

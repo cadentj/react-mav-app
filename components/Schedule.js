@@ -93,7 +93,7 @@ export default function Schedule() {
 
   return (
     <Box sx={{ bgcolor: 'background.paper'}}>
-      <AppBar position="static">
+      <AppBar position="absolute">
         <Tabs
           value={value}
           onChange={handleChange}

@@ -5,24 +5,21 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {Link as RouterLink} from 'react-router-dom';
 
-import {
-  Link as RouterLink,
-  Route,
-  Routes,
-  MemoryRouter,
-  useLocation,
-} from 'react-router-dom';
-
-const LinkBehavior = React.forwardRef((props, ref) => (
-  <RouterLink ref={ref} to="/" {...props} role={undefined} />
-));
+const styles = {
+  stickToBottom: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+  },
+};
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box>
+    <Box position="fixed" style={{bottom: 0, width:'100%'}}>
       <BottomNavigation
         showLabels
         value={value}
@@ -33,7 +30,7 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} component={RouterLink} to='/'/>
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} component={RouterLink} to='Pages'/>
         <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} component={RouterLink} to='Calendar'/>
-      </BottomNavigation>
+       </BottomNavigation>
     </Box>
   );
 }

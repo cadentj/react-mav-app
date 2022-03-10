@@ -5,11 +5,9 @@ import Schedule from '../components/Schedule';
 
 export default function HomeScreen() {
 
-  const Daily = Schedule();
-  
   return (
     <View style={{ flex: 1 }}>
-      {Daily}
+      <Schedule/>
     </View>
   );
 }
