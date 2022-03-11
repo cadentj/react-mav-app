@@ -1,26 +1,25 @@
-import * as React from 'react';
-import HomeScreen from './views/Home';
-import PagesScreen from './views/Pages';
-import CalendarScreen from './views/Calendar';
-import ButtonAppBar from './components/appbar';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import * as React from "react";
+import HomeScreen from "./views/Home";
+import PagesScreen from "./views/Pages";
+import CalendarScreen from "./views/Calendar";
+import ButtonAppBar from "./components/AppBar";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { NativeRouter, Routes, Route } from "react-router-native";
-import SimpleBottomNavigation from './components/BottomNavigator';
+import SimpleBottomNavigation from "./components/BottomNavigator";
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark"
   },
-  spacing: 40,
+  spacing: 40
 });
 
 export default function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <NativeRouter>
         <ButtonAppBar />
-      
+
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="Pages" element={<PagesScreen />} />
@@ -29,8 +28,5 @@ export default function App() {
         <SimpleBottomNavigation />
       </NativeRouter>
     </ThemeProvider>
-
-
   );
 }
-
