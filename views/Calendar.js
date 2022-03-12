@@ -37,15 +37,15 @@ export default function CalendarScreen() {
                     console.log('day changed');
                 }}
                 // Initially selected day
-                selected={'2012-05-16'}
+                selected={'2022-03-12'}
                 // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-                minDate={'2012-05-10'}
+                minDate={'2022-01-01'}
                 // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-                maxDate={'2012-05-30'}
+                maxDate={'2023-01-01'}
                 // Max amount of months allowed to scroll to the past. Default = 50
-                pastScrollRange={50}
+                pastScrollRange={12}
                 // Max amount of months allowed to scroll to the future. Default = 50
-                futureScrollRange={50}
+                futureScrollRange={12}
                 // Specify how each item should be rendered in agenda
                 renderItem={(item, firstItemInDay) => {
                     return <View/>
