@@ -92,8 +92,8 @@ export default function Schedule() {
   const dayOne = createCarrierList();
 
   return (
-    <Box sx={{ bgcolor: 'background.paper'}}>
-      <AppBar position="absolute">
+    <Box sx={{ bgcolor: 'background.paper', height:'100%'}}>
+      <AppBar position="sticky">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -141,14 +141,38 @@ function createCarrierList() {
 }
 
 function createTile(key,carrier) {
+  const ScheduleTile = styled((props) => <ListItem {...props} />)(({ theme }) => ({
+    textTransform: 'none',
+    minWidth: 0,
+    minHeight: 30,
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 0,
+      maxWidth: '20%',
+    },
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(1),
+    color: 'rgba(0, 0, 0, 0.85)',
+    '&:hover': {
+      color: '#40a9ff',
+      opacity: 1,
+    },
+    '&.Mui-selected': {
+      color: '#1890ff',
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: '#d1eaff',
+    },
+  }));
+
   return (
-    <ListItem disablePadding key={key}>
+    <ScheduleTile disablePadding key={key}>
       <ListItemButton>
         <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
         <ListItemText primary={carrier} />
       </ListItemButton>
-    </ListItem>
+    </ScheduleTile>
   );
 }

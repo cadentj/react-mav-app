@@ -11,7 +11,6 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
   },
-  spacing: 40,
 });
 
 export default function App() {
@@ -20,11 +19,10 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NativeRouter>
         <ButtonAppBar />
-      
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
+          <Route path="/" element={<CalendarScreen />} />
           <Route path="Pages" element={<PagesScreen />} />
-          <Route path="Calendar" element={<CalendarScreen />} />
+          <Route path="Calendar" element={<HomeScreen />} />
         </Routes>
         <SimpleBottomNavigation />
       </NativeRouter>

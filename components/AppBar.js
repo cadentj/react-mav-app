@@ -7,33 +7,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { View } from 'react-native';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+import SwipeableTemporaryDrawer from './Drawer';
 
 export default function ButtonAppBar() {
   return (
     <AppBar  position="sticky" >
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ ml: 2 }}
-          >
-            <AccountCircleIcon />
-          </IconButton>
+          <SwipeableTemporaryDrawer/>
         </Toolbar>
       </AppBar>
   );
