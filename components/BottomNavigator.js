@@ -16,7 +16,7 @@ const styles = {
 };
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
 
   return (
     <Box position="fixed" style={{bottom: 0, width:'100%'}}>
@@ -27,9 +27,9 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} component={RouterLink} to='/'/>
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} component={RouterLink} to='Pages'/>
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} component={RouterLink} to='Calendar'/>
+        <BottomNavigationAction label="Schedule" icon={<RestoreIcon />} component={RouterLink} to='Schedule'/>
+        <BottomNavigationAction label="Calendar" icon={<LocationOnIcon />} component={RouterLink} to='/'/>
+        <BottomNavigationAction label="Resources" icon={<FavoriteIcon />} component={RouterLink} to='Resources'/>
        </BottomNavigation>
     </Box>
   );

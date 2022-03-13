@@ -1,6 +1,6 @@
 import * as React from 'react';
-import HomeScreen from './views/Home';
-import PagesScreen from './views/Pages';
+import ScheduleScreen from './views/Schedule';
+import ResourcesScreen from './views/Resources';
 import CalendarScreen from './views/Calendar';
 import ButtonAppBar from './components/appbar';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -20,9 +20,9 @@ export default function App() {
       <NativeRouter>
         <ButtonAppBar />
         <Routes>
+          <Route path="Schedule" element={<ScheduleScreen />} />
           <Route path="/" element={<CalendarScreen />} />
-          <Route path="Pages" element={<PagesScreen />} />
-          <Route path="Calendar" element={<HomeScreen />} />
+          <Route path="Resources" element={<ResourcesScreen />} />
         </Routes>
         <SimpleBottomNavigation />
       </NativeRouter>

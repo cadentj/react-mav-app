@@ -4,7 +4,7 @@ import Schedule from '../components/Schedule';
 
 
 
-export default function HomeScreen() {
+export default function ScheduleScreen() {
 
   return (
     <View style={{ flex: 1 }}>
